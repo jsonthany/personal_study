@@ -1,3 +1,5 @@
+# link: https://www.educative.io/courses/ds-and-algorithms-in-python/
+
 class Node:
     def __init__(self, data):
       self.data = data
@@ -208,3 +210,36 @@ class LinkedList:
         else:
           curr = curr.next
           prev.next = curr
+          
+    def getNthToLastNodeOne(self, num):
+      totalLen = self.lenRecursive(self.head)
+      curr = self.head
+      
+      while (curr):
+        if (totalLen == num):
+          return curr.data
+        curr = curr.next
+        totalLen -= 1
+      
+      return None
+    
+    def getNthToLastNodeTwo(self, num):
+      trail = self.head
+      scout = self.head
+      
+      while ((num > 0) and (scout)):
+        if ((not scout.next) and (num == 1)):
+          return trail.data
+        scout = scout.next
+        num -= 1
+        
+      if ((not scout) or (num < 0)):
+        return None
+        
+      while (scout):
+        scout = scout.next
+        trail = trail.next
+        
+      return trail.data
+        
+      

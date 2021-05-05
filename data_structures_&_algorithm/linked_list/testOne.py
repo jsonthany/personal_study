@@ -23,3 +23,7 @@ print("")
 
 print(ll.lenIterative())
 print(ll.lenRecursive(ll.head))
+
+print("")
+print(ll.getNthToLastNodeOne(3))
+print(ll.getNthToLastNodeTwo(3))
