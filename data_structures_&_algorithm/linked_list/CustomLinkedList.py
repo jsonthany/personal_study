@@ -242,4 +242,22 @@ class LinkedList:
         
       return trail.data
         
+    def countDataIterative(self, data):
+      curr = self.head
+      count = 0
       
+      while (curr):
+        if (curr.data == data):
+          count += 1
+          
+        curr = curr.next
+        
+      return count
+    
+    def countDataRecursive(self, node, data):
+      if (not node):
+        return 0
+      elif (node.data != data):
+        return self.countDataRecursive(node.next, data)
+      else:
+        return 1 + self.countDataRecursive(node.next, data)
