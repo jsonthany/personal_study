@@ -37,3 +37,7 @@ print(ll.countDataIterative(4))
 print(ll.countDataRecursive(ll.head,4))
 print(ll.countDataIterative(2))
 print(ll.countDataRecursive(ll.head,2))
+
+print("")
+ll.rotate(2)
+ll.printList()

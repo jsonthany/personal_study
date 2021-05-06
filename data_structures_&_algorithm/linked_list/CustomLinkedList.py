@@ -261,3 +261,30 @@ class LinkedList:
         return self.countDataRecursive(node.next, data)
       else:
         return 1 + self.countDataRecursive(node.next, data)
+      
+    def rotate(self, k):
+      count = 1
+      currOne = self.head
+      
+      if (k < 0):
+        return
+      
+      while (count < k):
+        currOne = currOne.next
+        count += 1
+        
+      nextHead = currOne.next
+      currTwo = currOne.next
+      currOne.next = None
+      
+      while (currTwo.next):
+        currTwo = currTwo.next
+      
+      currTwo.next = self.head
+      self.head = nextHead
+      
+    def palindromeOne(self):
+      s = ""
+      curr = self.head
+      
+      
