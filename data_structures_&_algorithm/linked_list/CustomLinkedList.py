@@ -283,8 +283,54 @@ class LinkedList:
       currTwo.next = self.head
       self.head = nextHead
       
-    def palindromeOne(self):
+    def isPalindromeOne(self):
       s = ""
       curr = self.head
+
+      while (curr):
+        s += str(curr.data)
+        curr = curr.next
+        
+      return s == s[::-1]
+    
+    def isPalindromeTwo(self):
+      listOfValues = []
+      curr = self.head
       
+      while (curr):
+        listOfValues.append(curr.data)
+        curr = curr.next
+        
+      curr = self.head
       
+      while (curr):
+        if (curr.data != listOfValues.pop()):
+          return False
+        curr = curr.next
+        
+      return True
+    
+    def isPalindromeThree(self):
+      if (self.head):
+        p = self.head
+        q = self.head
+        prev = []
+        
+        i = 0
+        while (q):
+          prev.append(q)
+          q = q.next
+          i += 1
+        q = prev[i-1]
+        
+        count = 1
+        while (count <= ((i // 2) + 1)):
+          if (p.data != prev[-count].data):
+            return False
+          p = p.next
+          count += 1
+          
+        return True
+        
+      else:
+        True
