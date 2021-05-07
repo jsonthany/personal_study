@@ -9,8 +9,15 @@ cll.prepend(100)
 cll.printList()
 
 print("")
-cll.removeNode(7)
+cll.removeNodeKey(7)
 cll.printList()
 
+# print("")
+# print(cll.__len__())
+
+# print("")
+# cll.splitList()
+
 print("")
-print(cll.__len__())
+cll.josephusCircle(2)
+cll.printList()

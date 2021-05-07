@@ -44,7 +44,7 @@ class CircularLinkedList:
             if (curr == self.head):
                 break
             
-    def removeNode(self, key):
+    def removeNodeKey(self, key):
         if (self.head):
             if (self.head.data == key):
                 curr = self.head
@@ -77,4 +77,65 @@ class CircularLinkedList:
         return count
     
     def splitList(self):
-        pass
+        length = self.__len__()
+        midpoint = length // 2
+        count = 0
+        
+        if (length == 0):
+            return None
+        if (length == 1):
+            return self.head
+        
+        prev = None
+        curr = self.head
+        
+        newLinkedList = CircularLinkedList()
+        
+        while (midpoint > 0):
+            prev = curr
+            curr = curr.next
+            midpoint -= 1
+        prev.next = self.head
+        
+        while (curr.next != self.head):
+            newLinkedList.append(curr.data)
+            curr = curr.next
+        newLinkedList.append(curr.data)
+        
+        self.printList()
+        print("")
+        newLinkedList.printList()
+        
+    def removeNodeNode(self, node):
+        if (self.head):
+            if (self.head == node):
+                curr = self.head
+                if (curr.next == self.head):
+                    self.head = None
+                else:
+                    while (curr.next != self.head):
+                        curr = curr.next
+                    curr.next = self.head.next
+                    self.head = self.head.next
+            else:
+                prev = None
+                curr = self.head
+                while (curr.next != self.head):
+                    prev = curr
+                    curr = curr.next
+                    if (curr == node):
+                        prev.next = curr.next
+                        curr = None
+                        break
+                    
+    def josephusCircle(self, step):
+        count = step
+        curr = self.head
+        
+        while (self.__len__() > 1):
+            while (count > 1):
+                curr = curr.next
+                count -= 1
+            self.removeNodeNode(curr)
+            curr = curr.next
+            count = step
